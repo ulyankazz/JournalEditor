@@ -26,7 +26,7 @@ private:
     string comments; // Для хранения правок/комментариев
     string typesettingText; // Для хранения текста верстки
 public:
-    Article(int i, string t, string txt, string a) : id(i), title(t), text(txt), author(a), status("Draft"), 
+    Article(int i, string t, string txt, string a) : id(i), title(t), text(txt), author(a), status("Draft"),
                                                     assignedJournalist(""), comments(""), typesettingText("") {}
     void setId(int i) { id = i; }
     void setStatus(string s) { status = s; }
@@ -47,7 +47,7 @@ public:
         cout << endl;
     }
     void saveToFile(ofstream& outFile) const {
-        outFile << id << "|" << title << "|" << text << "|" << status << "|" << author << "|" << assignedJournalist 
+        outFile << id << "|" << title << "|" << text << "|" << status << "|" << author << "|" << assignedJournalist
                 << "|" << comments << "|" << typesettingText << "\n";
     }
     static Article loadFromFile(int i, const string& line) {
@@ -185,9 +185,9 @@ public:
         cout << "Назначенные статьи:\n";
         vector<int> assignedArticles;
         for (size_t i = 0; i < articles.size(); ++i) {
-            if (articles[i].getAssignedJournalist() == password && 
+            if (articles[i].getAssignedJournalist() == password &&
                 (articles[i].getStatus() == "InProgress" || articles[i].getStatus() == "NeedsRevision")) {
-                cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus() 
+                cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus()
                      << ", Комментарии: " << articles[i].getComments() << ")\n";
                 assignedArticles.push_back(i);
             }
@@ -285,7 +285,7 @@ vector<Article> loadArticles() {
     }
     cout << "Загружено статей: " << articles.size() << endl;
     for (const auto& article : articles) {
-        cout << "Загружено: ID " << article.getId() << ", " << article.getTitle() << " (Статус: " << article.getStatus() 
+        cout << "Загружено: ID " << article.getId() << ", " << article.getTitle() << " (Статус: " << article.getStatus()
              << ", Назначена: " << article.getAssignedJournalist() << ")\n";
     }
     return articles;
@@ -321,7 +321,7 @@ void saveArticles(const vector<Article>& articles) {
     }
     cout << "Сохранено статей: " << articles.size() << endl;
     for (const auto& article : articles) {
-        cout << "Сохранено: ID " << article.getId() << ", " << article.getTitle() << " (Статус: " << article.getStatus() 
+        cout << "Сохранено: ID " << article.getId() << ", " << article.getTitle() << " (Статус: " << article.getStatus()
              << ", Назначена: " << article.getAssignedJournalist() << ")\n";
     }
 }
@@ -367,8 +367,8 @@ void userMenu(User* user, vector<Article>& articles) {
             for (auto& article : articles) {
                 if (article.getStatus() == "Typeset") {
                     found = true;
-                    cout << "Верстка статьи ID: " << article.getId() << ", " << article.getTitle() 
-                         << ". Текст верстки: " << article.getTypesettingText() 
+                    cout << "Верстка статьи ID: " << article.getId() << ", " << article.getTitle()
+                         << ". Текст верстки: " << article.getTypesettingText()
                          << ". Утвердить? (да/нет): ";
                     string approve;
                     getline(cin, approve);
@@ -397,7 +397,7 @@ void userMenu(User* user, vector<Article>& articles) {
             vector<int> availableArticles;
             for (size_t i = 0; i < articles.size(); ++i) {
                 if (articles[i].getStatus() == "Assigned") {
-                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus() 
+                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus()
                          << ", Назначена: " << articles[i].getAssignedJournalist() << ")\n";
                     availableArticles.push_back(i);
                 }
@@ -475,7 +475,7 @@ void userMenu(User* user, vector<Article>& articles) {
             vector<int> draftArticles;
             for (size_t i = 0; i < articles.size(); ++i) {
                 if (articles[i].getStatus() == "Draft") {
-                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus() 
+                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus()
                          << ", Назначена: " << articles[i].getAssignedJournalist() << ")\n";
                     draftArticles.push_back(i);
                 }
@@ -529,7 +529,7 @@ void userMenu(User* user, vector<Article>& articles) {
             vector<int> acceptedArticles;
             for (size_t i = 0; i < articles.size(); ++i) {
                 if (articles[i].getStatus() == "Accepted") {
-                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus() 
+                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus()
                          << ", Назначена: " << articles[i].getAssignedJournalist() << ")\n";
                     acceptedArticles.push_back(i);
                 }
@@ -577,7 +577,7 @@ void userMenu(User* user, vector<Article>& articles) {
             vector<int> revisableArticles;
             for (size_t i = 0; i < articles.size(); ++i) {
                 if (articles[i].getStatus() == "Revised") {
-                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus() 
+                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus()
                          << ", Назначена: " << articles[i].getAssignedJournalist() << ")\n";
                     revisableArticles.push_back(i);
                 }
@@ -628,9 +628,9 @@ void userMenu(User* user, vector<Article>& articles) {
             cout << "Выберите статью для работы:\n";
             vector<int> assignedArticles;
             for (size_t i = 0; i < articles.size(); ++i) {
-                if (articles[i].getAssignedJournalist() == user->getPassword() && 
+                if (articles[i].getAssignedJournalist() == user->getPassword() &&
                     articles[i].getStatus() == "InProgress") {
-                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus() 
+                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus()
                          << ", Комментарии: " << articles[i].getComments() << ")\n";
                     assignedArticles.push_back(i);
                 }
@@ -683,7 +683,7 @@ void userMenu(User* user, vector<Article>& articles) {
             vector<int> revisionArticles;
             for (size_t i = 0; i < articles.size(); ++i) {
                 if (articles[i].getStatus() == "NeedsRevision" && articles[i].getAssignedJournalist() == user->getPassword()) {
-                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus() 
+                    cout << articles[i].getId() << ". " << articles[i].getTitle() << " (Статус: " << articles[i].getStatus()
                          << ", Комментарии: " << articles[i].getComments() << ")\n";
                     revisionArticles.push_back(i);
                 }
@@ -911,3 +911,4 @@ int main() {
 
     return 0;
 }
+// Улучшения для роли Editor
