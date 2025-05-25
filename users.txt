@@ -1,0 +1,10 @@
+ChiefEditor|Ульяна
+Journalist|Максим
+Journalist|Никита
+Editor|Даша
+Journalist|Максим
+Editor|Даша
+Journalist|Максим
+Editor|Даша
+Typesetter|Данил
+ChiefEditor|Ульяна
